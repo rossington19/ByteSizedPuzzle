@@ -6,7 +6,7 @@ var goalArray = [];
 var currentArray = [];
 
 function setup() {
-	createCanvas(1200, 700);
+	createCanvas(500, 1000);
 	noStroke()
 	for (var i = 0; i < numberOfButtons; i++){
 		buttons[i] = new Button(i,numberOfButtons);

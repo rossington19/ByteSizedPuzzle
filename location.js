@@ -1,5 +1,5 @@
 function calculateLocation(num, numberOfButtons){
-	this.MAX_NUM_WIDE = 4;
+	this.MAX_NUM_WIDE = 2;
 	this.BUTTON_SIZE = 150;
 	this.PADDING = this.BUTTON_SIZE + 50;
 
