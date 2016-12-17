@@ -1,8 +1,8 @@
 var numberOfButtons = 4;
-var maxNumberWide = 4;
+var maxNumberWide = 2;
 var numberOfMoves = 3;
 var minNumberOfButtons = 3;
-var maxNumberOfButtons = 16;
+var maxNumberOfButtons = 12;
 
 var completeAnimation = false;
 var refreshAnimation = true;
@@ -14,7 +14,7 @@ var goalArray = [];
 var currentArray = [];
 
 function setup() {
-	createCanvas(800, 800);
+	createCanvas(1000, 1000);
 	noStroke()
 	startGame();
 	animationSize = buttons[0].loc.z;
@@ -71,7 +71,7 @@ function completed(){
 
 function mousePressed(){
 	for (var i = 0; i < numberOfButtons; i++){
-		if (dist(mouseX, mouseY, buttons[i].loc.x, buttons[i].loc.y) < buttons[i].loc.z){
+		if (dist(mouseX, mouseY, buttons[i].loc.x, buttons[i].loc.y) < buttons[i].loc.z/2){
 			currentArray = buttons[i].applyRule(currentArray);
 		}
 	} 											//If button clicked, apply rules current array
@@ -86,5 +86,17 @@ function mousePressed(){
 		refreshAnimation = true;
 		numberOfButtons++;
 		startGame();
+	}
+	if (dist(mouseX, mouseY,width-150,50) < 50){
+		if(maxNumberWide === 2) maxNumberWide = 4;
+		else if (maxNumberWide === 4) maxNumberWide = 2;
+		for (var i = 0; i < numberOfButtons; i++){
+			buttons[i].recalculateLocation();
+		}
+	}
+	if (dist(mouseX, mouseY,150,50) < 50){
+		for (var i = 0; i < numberOfButtons; i++){
+			currentArray[i] = false;
+		}
 	}
 }

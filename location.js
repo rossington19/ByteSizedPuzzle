@@ -14,13 +14,13 @@ function calculateLocation(num, numberOfButtons){
 		this.totalRows -= 1;
 	}
 
-	if (this.totalRows+1 > this.MAX_NUM_WIDE){
-		this.BUTTON_SIZE = (height+10/this.totalRows);
-		this.PADDING = this.BUTTON_SIZE + 50;
-	} else {
+	// if (this.totalRows+1 > this.MAX_NUM_WIDE){
+	// 	this.BUTTON_SIZE = (height+10/this.totalRows);
+	// 	this.PADDING = this.BUTTON_SIZE + 50;
+	// } else {
 		this.BUTTON_SIZE = 100;
 		this.PADDING = this.BUTTON_SIZE + 50;
-	}
+	// }
 
 	this.currentCol = num % this.MAX_NUM_WIDE;
 	this.currentRow = int(num/this.MAX_NUM_WIDE);

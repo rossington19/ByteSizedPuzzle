@@ -31,14 +31,19 @@ function drawText(){
 	text(numberOfButtons.toString(), width/2,50);
 	if(numberOfButtons > minNumberOfButtons){
 		fill(111);
-		ellipse((width/2)-50, 40, 30, 30);
+		ellipse((width/2)-50, 40, 40, 40);
 		fill(235);
 		text("-", (width/2)-50,48);
 	}
 	if(numberOfButtons < maxNumberOfButtons){
 		fill(111);
-		ellipse((width/2)+50, 40, 30, 30);
+		ellipse((width/2)+50, 40, 40, 40);
 		fill(235);
 		text("+", (width/2)+50,50);
 	}
+	fill(111);
+	rectMode(LEFT);
+	text("Restart",150,50);
+	rectMode(RIGHT);
+	text("Rotate",width-150,50);
 }
