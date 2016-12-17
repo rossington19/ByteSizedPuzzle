@@ -14,7 +14,7 @@ var goalArray = [];
 var currentArray = [];
 
 function setup() {
-	createCanvas(900, 2000);
+	createCanvas(900, 1500);
 	noStroke()
 	startGame();
 	animationSize = buttons[0].loc.z;

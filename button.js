@@ -1,6 +1,6 @@
 function Button(num,numberOfButtons){
 	this.NUMBER_OF_TARGETS = 3;
-	this.border = 30;
+	this.border = 50;
 	this.targets = [];
 	this.loc = calculateLocation(num, numberOfButtons);
 	this.currentColor = color(235);
