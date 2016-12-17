@@ -114,9 +114,9 @@ function waitBeforeAnimation(){
 }
 
 function pressRandomButtons(){
-	if (frameCount % 20 === 0){
-		var randomNumber = int(random(numberOfButtons));
-		console.log(randomNumber.toString())
-		currentArray = buttons[randomNumber].applyRule(currentArray);
-	}
+	// if (frameCount % 20 === 0){
+	// 	var randomNumber = int(random(numberOfButtons));
+	// 	console.log(randomNumber.toString())
+	// 	currentArray = buttons[randomNumber].applyRule(currentArray);
+	// }
 }
