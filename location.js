@@ -1,13 +1,10 @@
 function calculateLocation(num, numberOfButtons){
-	this.MAX_NUM_WIDE = 2;
-	this.BUTTON_SIZE = 150;
-	this.PADDING = this.BUTTON_SIZE + 50;
-
+	this.MAX_NUM_WIDE = maxNumberWide;
 	this.totalRows = int(numberOfButtons / this.MAX_NUM_WIDE);
 
 	if (numberOfButtons > this.MAX_NUM_WIDE){
 		this.totalCols =  this.MAX_NUM_WIDE - 1;
-		if ((num/this.MAX_NUM_WIDE)>=this.totalRows){
+		if ((num/this.MAX_NUM_WIDE) >= this.totalRows){
 			this.totalCols = (numberOfButtons % MAX_NUM_WIDE) - 1;
 		}
 	} else {
@@ -15,6 +12,14 @@ function calculateLocation(num, numberOfButtons){
 	}
 	if (numberOfButtons % this.MAX_NUM_WIDE === 0){
 		this.totalRows -= 1;
+	}
+
+	if (this.totalRows+1 > this.MAX_NUM_WIDE){
+		this.BUTTON_SIZE = (height+10/this.totalRows);
+		this.PADDING = this.BUTTON_SIZE + 50;
+	} else {
+		this.BUTTON_SIZE = 100;
+		this.PADDING = this.BUTTON_SIZE + 50;
 	}
 
 	this.currentCol = num % this.MAX_NUM_WIDE;

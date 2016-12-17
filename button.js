@@ -3,13 +3,13 @@ function Button(num,numberOfButtons){
 	this.border = 15;
 	this.targets = [];
 	this.loc = calculateLocation(num, numberOfButtons);
-	this.currentColor = color(235,235,235);
+	this.currentColor = color(235);
 	this.goalColor = color(111);
 
 
 	this.update = function(){
-			this.goalColor = color(111);
-			this.currentColor = color(235,235,235);
+		this.goalColor = color(111);
+		this.currentColor = color(235);
 		if (currentArray[num]) this.currentColor = color(95, 185, 255); 
 		if(goalArray[num]) this.goalColor = color(95, 185, 255);	
 	}
@@ -27,11 +27,15 @@ function Button(num,numberOfButtons){
 		return arrayToChange;
 	}
 
-	this.show = function(){
+	this.show = function(sizeAlter){
 		rectMode(CENTER);
 		fill(this.goalColor);
-		ellipse(this.loc.x, this.loc.y, this.loc.z, this.loc.z);
+		ellipse(this.loc.x, this.loc.y, this.loc.z - sizeAlter, this.loc.z - sizeAlter);
 		fill(this.currentColor);
-		ellipse(this.loc.x, this.loc.y, this.loc.z - this.border, this.loc.z - this.border);
+		ellipse(this.loc.x, this.loc.y, this.loc.z - this.border - sizeAlter, this.loc.z - this.border - sizeAlter);
+	}
+
+	this.recalculateLocation = function(){
+		this.loc = calculateLocation(num, numberOfButtons);
 	}
 }
