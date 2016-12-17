@@ -41,9 +41,9 @@ function drawText(){
 		fill(235);
 		text("+", (width/2)+50,50);
 	}
-	fill(111);
-	rectMode(LEFT);
-	text("Restart",150,50);
-	rectMode(RIGHT);
-	text("Rotate",width-150,50);
+	// fill(111);
+	// rectMode(LEFT);
+	// text("Restart",150,50);
+	// rectMode(RIGHT);
+	// text("Rotate",width-150,50);
 }

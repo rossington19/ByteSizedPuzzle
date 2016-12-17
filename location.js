@@ -18,7 +18,7 @@ function calculateLocation(num, numberOfButtons){
 	// 	this.BUTTON_SIZE = (height+10/this.totalRows);
 	// 	this.PADDING = this.BUTTON_SIZE + 50;
 	// } else {
-		this.BUTTON_SIZE = 100;
+		this.BUTTON_SIZE = 400;
 		this.PADDING = this.BUTTON_SIZE + 50;
 	// }
 
