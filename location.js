@@ -18,8 +18,8 @@ function calculateLocation(num, numberOfButtons){
 	// 	this.BUTTON_SIZE = (height+10/this.totalRows);
 	// 	this.PADDING = this.BUTTON_SIZE + 50;
 	// } else {
-		this.BUTTON_SIZE = 250;
-		this.PADDING = this.BUTTON_SIZE + 80;
+		this.BUTTON_SIZE = 500;
+		this.PADDING = this.BUTTON_SIZE + 50;
 	// }
 
 	this.currentCol = num % this.MAX_NUM_WIDE;
@@ -31,5 +31,5 @@ function calculateLocation(num, numberOfButtons){
 	this.xLocation = this.xStartingLoc + (currentCol * this.PADDING);
 	this.yLocation = this.yStartingLoc + (currentRow * this.PADDING);
 
-	return new p5.Vector(xLocation, yLocation, BUTTON_SIZE);
+	return new p5.Vector(this.xLocation, this.yLocation, this.BUTTON_SIZE);
 }

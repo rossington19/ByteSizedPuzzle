@@ -1,6 +1,8 @@
 function Button(num,numberOfButtons){
 	this.NUMBER_OF_TARGETS = 3;
-	this.border = 50;
+	this.mode = 0;
+	this.modeDifficulty = 5;
+	this.border = 15;
 	this.targets = [];
 	this.loc = calculateLocation(num, numberOfButtons);
 	this.currentColor = color(235);
@@ -15,14 +17,36 @@ function Button(num,numberOfButtons){
 	}
 
 	this.generateRules = function(){
-		for (var i = 0; i < this.NUMBER_OF_TARGETS; i++){
-			this.targets[i] = int(random(numberOfButtons)); 
+		switch (this.mode) {
+			case 0:
+				for (var i = 0; i < this.NUMBER_OF_TARGETS; i++){
+					this.targets[i] = int(random(numberOfButtons)); 
+				}
+				break;
+			case 1:
+				//For inverter button mode
+				break;		
+			case 2:
+				this.NUMBER_OF_TARGETS = this.modeDifficulty;
+				for (var i = 0; i < this.NUMBER_OF_TARGETS; i++){
+					this.targets[i] = int(random(numberOfButtons)); 
+				}
+				break;
 		}
 	}
 
 	this.applyRule = function(arrayToChange){
-		for (var i = 0; i < this.NUMBER_OF_TARGETS; i++){
-			arrayToChange[this.targets[i]] = !arrayToChange[this.targets[i]];
+		switch (this.mode) {
+			case 1:
+				for (var i = 0; i < arrayToChange.length; i++){
+					arrayToChange[i] = !arrayToChange[i];
+				}
+
+			default: //case 0 and 2
+				for (var i = 0; i < this.NUMBER_OF_TARGETS; i++){
+					arrayToChange[this.targets[i]] = !arrayToChange[this.targets[i]];
+				}
+				break;
 		}
 		return arrayToChange;
 	}
@@ -37,5 +61,9 @@ function Button(num,numberOfButtons){
 
 	this.recalculateLocation = function(){
 		this.loc = calculateLocation(num, numberOfButtons);
+	}
+
+	this.setMode = function(incomingMode){
+		this.mode = incomingMode;
 	}
 }
