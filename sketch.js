@@ -1,4 +1,4 @@
-var numberOfButtons = 8;
+var numberOfButtons = 6;
 var maxNumberWide = 2;
 var minNumberOfButtons = 3;
 var maxNumberOfButtons = 20;
@@ -26,7 +26,8 @@ function setup() {
 function startGame(){
 	orderOfPresses = [];
 	for (var i = 0; i < numberOfButtons; i++){
-		if (incTarget){
+		if (incTarget === true){
+			console.log("fail");
 			buttons[i].setMode(2);
 		}
 		buttons[i] = new Button(i,numberOfButtons);

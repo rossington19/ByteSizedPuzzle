@@ -25,6 +25,7 @@ function Button(num,numberOfButtons){
 				break;
 			case 1:
 				//For inverter button mode
+				this.targets[0] = 0;
 				break;		
 			case 2:
 				this.NUMBER_OF_TARGETS = this.modeDifficulty;
@@ -41,7 +42,7 @@ function Button(num,numberOfButtons){
 				for (var i = 0; i < arrayToChange.length; i++){
 					arrayToChange[i] = !arrayToChange[i];
 				}
-
+				break;
 			default: //case 0 and 2
 				for (var i = 0; i < this.NUMBER_OF_TARGETS; i++){
 					arrayToChange[this.targets[i]] = !arrayToChange[this.targets[i]];
