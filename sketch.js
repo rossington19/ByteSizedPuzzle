@@ -1,7 +1,8 @@
 var numberOfButtons = 6;
+var numberOfMoves = 3;
 var maxNumberWide = 2;
-var minNumberOfButtons = 3;
-var maxNumberOfButtons = 20;
+var minNumberOfButtons = 4;
+var maxNumberOfButtons = 100;
 
 var completeAnimation = false;
 var refreshAnimation = true;
@@ -14,7 +15,7 @@ var goalArray = [];
 var currentArray = [];
 
 var invertRule = true;
-var incTarget = false;
+var incTarget = true;
 
 function setup() {
 	createCanvas(windowWidth, windowHeight);
@@ -26,15 +27,17 @@ function setup() {
 function startGame(){
 	orderOfPresses = [];
 	for (var i = 0; i < numberOfButtons; i++){
-		if (incTarget === true){
-			console.log("fail");
-			buttons[i].setMode(2);
-		}
 		buttons[i] = new Button(i,numberOfButtons);
 		goalArray[i] = false;
 		currentArray[i] = false;
 		buttons[i].generateRules();		
 	}											//Generate Rules & set arrays to false
+	if (incTarget === true){
+		var randomNumber = int(random(numberOfButtons));
+		buttons[randomNumber].setMode(2);
+		buttons[randomNumber].generateRules();
+		console.log(randomNumber.toString());
+	}
 	if (invertRule === true){
 		var randomNumber = int(random(numberOfButtons));
 		buttons[randomNumber].setMode(1);
@@ -44,7 +47,7 @@ function startGame(){
 	}
 	shuffle(orderOfPresses,true);
 	console.log(orderOfPresses.toString());
-	for (var i = 0; i < numberOfButtons; i++){
+	for (var i = 0; i < numberOfMoves; i++){
 		goalArray = buttons[orderOfPresses[i]].applyRule(goalArray);	
 	}
 	var empty = true;
@@ -114,11 +117,11 @@ function mousePressed(){
 	if (dist(mouseX, mouseY,width-150,50) < 50){
 		if(maxNumberWide === 2) {
 			maxNumberWide = 4;
-			maxNumberOfButtons = 20;
+			maxNumberOfButtons = 100;
 		}
 		else if (maxNumberWide === 4) {
 			maxNumberWide = 2;
-			maxNumberOfButtons = 10;
+			maxNumberOfButtons = 100;
 		}
 		for (var i = 0; i < numberOfButtons; i++){
 			buttons[i].recalculateLocation();

@@ -1,7 +1,7 @@
 function Button(num,numberOfButtons){
-	this.NUMBER_OF_TARGETS = 3;
+	this.NUMBER_OF_TARGETS = 2;
 	this.mode = 0;
-	this.modeDifficulty = 5;
+	this.modeDifficulty = 3;
 	this.border = 15;
 	this.targets = [];
 	this.loc = calculateLocation(num, numberOfButtons);
@@ -19,9 +19,7 @@ function Button(num,numberOfButtons){
 	this.generateRules = function(){
 		switch (this.mode) {
 			case 0:
-				for (var i = 0; i < this.NUMBER_OF_TARGETS; i++){
-					this.targets[i] = int(random(numberOfButtons)); 
-				}
+				this.standardRuleSetup();
 				break;
 			case 1:
 				//For inverter button mode
@@ -29,10 +27,32 @@ function Button(num,numberOfButtons){
 				break;		
 			case 2:
 				this.NUMBER_OF_TARGETS = this.modeDifficulty;
-				for (var i = 0; i < this.NUMBER_OF_TARGETS; i++){
-					this.targets[i] = int(random(numberOfButtons)); 
-				}
+				this.standardRuleSetup();
 				break;
+		}
+	}
+
+	this.standardRuleSetup = function(){
+		for (var i = 0; i < this.NUMBER_OF_TARGETS; i++){
+			this.targets[i] = int(random(numberOfButtons)); 
+		}
+
+		if (this.NUMBER_OF_TARGETS % 2 === 0){
+			this.testArray = [];
+			for (i = 0; i < numberOfButtons; i++){
+				this.testArray[i] = false;
+			}
+			this.testArray = this.applyRule(this.testArray);
+			this.empty = true;
+			for (var i = 0; i < numberOfButtons; i++){
+				if (this.testArray[i]) {
+					this.empty = false;
+					break;
+				}
+			}
+			if(this.empty){
+				this.generateRules();
+			}
 		}
 	}
 
