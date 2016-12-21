@@ -1,8 +1,10 @@
 // Difficulty settings
 var invertRule = true;
 var incTarget = true;
+var numberOfTargets = 2;
 var numberOfButtons = 6;
 var numberOfMoves = 3;
+
 var minNumberOfButtons = 4;
 var maxNumberOfButtons = 20;
 
@@ -17,7 +19,6 @@ var buttons = [];
 var orderOfPresses = [];
 var goalArray = [];
 var currentArray = [];
-
 
 // Location Values
 var maxColVertical = 2;

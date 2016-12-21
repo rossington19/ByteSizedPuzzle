@@ -2,7 +2,6 @@ function Button(num){
 	locationParameters();	
 	this.NUMBER_OF_TARGETS = 2;
 	this.mode = 0;
-	this.modeDifficulty = 3;
 	this.border = 30;
 	this.targets = [];
 	this.loc = calculateLocation(num);
@@ -24,10 +23,9 @@ function Button(num){
 				break;
 			case 1:
 				//For inverter button mode
-				this.targets[0] = 0;
 				break;		
 			case 2:
-				this.NUMBER_OF_TARGETS = this.modeDifficulty;
+				this.NUMBER_OF_TARGETS++;
 				this.standardRuleSetup();
 				break;
 		}

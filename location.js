@@ -11,7 +11,8 @@ function locationParameters() {
 		totalCols = maxColNum - 1;
 	
 	totalRows = Math.ceil(numberOfButtons / maxColNum) - 1;
-	buttonSize = (windowHeight)/((totalRows + 1.5)*1.5);		
+	buttonSize = (windowHeight)/((totalRows + 1)*1.8);
+	if (buttonSize > windowHeight/3.5) buttonSize = windowHeight/3.5
 }
 
 function calculateLocation(num){

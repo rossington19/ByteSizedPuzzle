@@ -1,4 +1,5 @@
 function setup() {
+	getVars();
 	createCanvas(windowWidth, windowHeight);
 	backgroundColor = color(235);
 	mainColor = color(140);
@@ -14,6 +15,7 @@ function startGame(){
 		buttons[i] = new Button(i);
 		goalArray[i] = false;
 		currentArray[i] = false;
+		buttons[i].NUMBER_OF_TARGETS = numberOfTargets;
 		buttons[i].generateRules();		
 	}											//Generate Rules & set arrays to false
 	if (incTarget === true){
@@ -41,8 +43,8 @@ function startGame(){
 		}
 	}
 	if(empty){
-		startGame();
 		console.log("Empty game generated")
+		startGame();
 	} 
 }
 

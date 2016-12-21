@@ -1,21 +1,43 @@
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <link type="text/css" rel="stylesheet" href="css/stylesheet.css">
-    <title>ByteSizedPuzzle</title>
+	<head>
+	 	<meta charset="UTF-8">
+	 	<link type="text/css" rel="stylesheet" href="css/stylesheet.css">
+	 	<title>ByteSizedPuzzle</title>
+	</head>
 
-  </head>
-
-  <body>
-    <!-- <h1>Byte Sized Puzzle</h1> -->
-    <div id="game">
-      <!-- <script language="javascript" src="libraries/p5.dom.js"></script> -->
-      <script language="javascript" type="text/javascript" src="libraries/p5.js"></script>
-      <script language="javascript" type="text/javascript" src="sketch.js"></script>
-      <script language="javascript" type="text/javascript" src="variables.js"></script>
-      <script language="javascript" type="text/javascript" src="button.js"></script>
-      <script language="javascript" type="text/javascript" src="location.js"></script>
-      <script language="javascript" type="text/javascript" src="AnimationsAndText.js"></script>
-    </div>
-  </body>
+	<body onload="startUp()">
+	    <h1>Byte Sized Puzzle</h1>
+	    <div id="levelSelect">
+	    	<div class="arrow" id="downArrow" onclick="updateLevelSelect(-1)"> < </div>
+	    	<div id="levelNumber">1</div>
+	    	<div class="arrow" id="upArrow" onclick="updateLevelSelect(1)"> > </div>
+			<h3 id="levelSub">Completed!</h3>	
+	    </div>
+	    <div id="indicators">
+	    	<div class="difficultyIndicator">
+	    		<div class="diffIndTop" id="inverter"> OFF </div>
+	    		<div class="diffIndBot"> Inverter</div>
+	    	</div>
+	    	<div class="difficultyIndicator">
+	    		<div class="diffIndTop isOn" id="targets"> 2 </div>
+	    		<div class="diffIndBot"> Number of Targets</div>
+	    	</div>
+	    	<div class="difficultyIndicator">
+	    		<div class="diffIndTop isOn" id="buttons"> 4 </div>
+	    		<div class="diffIndBot"> Number of Buttons</div>
+	    	</div>
+	    	<div class="difficultyIndicator">
+	    		<div class="diffIndTop isOn" id="moves"> 3 </div>
+	    		<div class="diffIndBot"> Number of Moves</div>
+	    	</div>
+	    	<div class="difficultyIndicator">
+	    		<div class="diffIndTop" id="ExTarg"> OFF </div>
+	    		<div class="diffIndBot"> Extra Targets</div>
+	    	</div>
+	    </div>
+	    <a href="game.html"> 
+			<div id="playButton" onclick="setVars()">PLAY</div>
+		</a>
+	</body>
+<script language="javascript" type="text/javascript" src="passingVars.js"></script> 
 </html>
