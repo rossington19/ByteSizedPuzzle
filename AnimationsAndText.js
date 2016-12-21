@@ -27,23 +27,23 @@ function drawText(){
 	textSize(30);
 	textAlign(CENTER);
 	rectMode(CENTER);
-	fill(111);	
+	fill(mainColor);	
 	text(numberOfButtons.toString(), width/2,50);
 	if(numberOfButtons > minNumberOfButtons){
-		fill(111);
+		fill(mainColor);
 		ellipse((width/2)-50, 40, 40, 40);
-		fill(235);
+		fill(backgroundColor);
 		text("-", (width/2)-50,48);
 	}
 	if(numberOfButtons < maxNumberOfButtons){
-		fill(111);
+		fill(mainColor);
 		ellipse((width/2)+50, 40, 40, 40);
-		fill(235);
+		fill(backgroundColor);
 		text("+", (width/2)+50,50);
 	}
-	fill(111);
+	fill(mainColor);
 	rectMode(LEFT);
 	text("Restart",150,50);
 	rectMode(RIGHT);
-	text("Rotate",width-150,50);
+	text("New Game",width-150,50);
 }

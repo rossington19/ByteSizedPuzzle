@@ -1,19 +1,20 @@
-function Button(num,numberOfButtons){
+function Button(num){
+	locationParameters();	
 	this.NUMBER_OF_TARGETS = 2;
 	this.mode = 0;
 	this.modeDifficulty = 3;
-	this.border = 15;
+	this.border = 30;
 	this.targets = [];
-	this.loc = calculateLocation(num, numberOfButtons);
-	this.currentColor = color(235);
-	this.goalColor = color(111);
+	this.loc = calculateLocation(num);
+	this.currentColor = backgroundColor;
+	this.goalColor = mainColor;
 
 
 	this.update = function(){
-		this.goalColor = color(111);
-		this.currentColor = color(235);
-		if (currentArray[num]) this.currentColor = color(95, 185, 255); 
-		if(goalArray[num]) this.goalColor = color(95, 185, 255);	
+		this.goalColor = color(mainColor);
+		this.currentColor = color(backgroundColor);
+		if (currentArray[num]) this.currentColor = accentColor;
+		if(goalArray[num]) this.goalColor = accentColor;	
 	}
 
 	this.generateRules = function(){
@@ -81,7 +82,8 @@ function Button(num,numberOfButtons){
 	}
 
 	this.recalculateLocation = function(){
-		this.loc = calculateLocation(num, numberOfButtons);
+		locationParameters();
+		this.loc = calculateLocation(num);
 	}
 
 	this.setMode = function(incomingMode){

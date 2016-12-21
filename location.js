@@ -1,34 +1,35 @@
-function calculateLocation(num, numberOfButtons){
-	this.MAX_NUM_WIDE = maxNumberWide;
-	this.totalRows = int(numberOfButtons / this.MAX_NUM_WIDE);
+function locationParameters() {
 
-	if (numberOfButtons > this.MAX_NUM_WIDE){
-		this.totalCols =  this.MAX_NUM_WIDE - 1;
-		if ((num/this.MAX_NUM_WIDE) >= this.totalRows){
-			this.totalCols = (numberOfButtons % MAX_NUM_WIDE) - 1;
-		}
-	} else {
-		this.totalCols = numberOfButtons - 1;
-	}
-	if (numberOfButtons % this.MAX_NUM_WIDE === 0){
-		this.totalRows -= 1;
-	}
+	if (windowHeight > windowWidth)				// If vertical layout
+		maxColNum = maxColVertical;
+	else 											// If horizontal layout
+		maxColNum = maxColHorizontal;
 
-	if (windowHeight/(2.5*this.totalRows) < windowWidth/(2*MAX_NUM_WIDE))
-		this.BUTTON_SIZE = windowHeight/(2.5*this.totalRows);
+	if (numberOfButtons < maxColNum)
+		totalCols = numberOfButtons - 1;
 	else
-		this.BUTTON_SIZE = windowWidth/(2*MAX_NUM_WIDE);
-
-	this.PADDING = this.BUTTON_SIZE + 50;
+		totalCols = maxColNum - 1;
 	
-	this.currentCol = num % this.MAX_NUM_WIDE;
-	this.currentRow = int(num/this.MAX_NUM_WIDE);
+	totalRows = Math.ceil(numberOfButtons / maxColNum) - 1;
+	buttonSize = (windowHeight)/((totalRows + 1.5)*1.5);		
+}
 
-	this.xStartingLoc = width/2 - (this.totalCols * this.PADDING) / 2;
-	this.yStartingLoc = height/2 - ((this.totalRows) * this.PADDING) / 2;
+function calculateLocation(num){
+	this.PADDING = buttonSize + 30;
 
-	this.xLocation = this.xStartingLoc + (currentCol * this.PADDING);
+	/////////////////// ROWS - Y LOCATION /////////////////////
+	this.currentRow = Math.floor(num/maxColNum);
+	this.yStartingLoc = height/2 - ((totalRows) * this.PADDING) / 2;
 	this.yLocation = this.yStartingLoc + (currentRow * this.PADDING);
 
-	return new p5.Vector(this.xLocation, this.yLocation, this.BUTTON_SIZE);
+	///////////////////// COL - X LOCATION /////////////////////
+	if (currentRow === totalRows)
+		this.currentRowsNumOfCols =  (numberOfButtons-1) % maxColNum;
+	else
+		this.currentRowsNumOfCols = totalCols;
+	this.currentCol = num % (this.currentRowsNumOfCols+1);
+	this.xStartingLoc = width/2 - (this.currentRowsNumOfCols * this.PADDING) / 2;
+	this.xLocation = this.xStartingLoc + (this.currentCol * this.PADDING);
+
+	return new p5.Vector(this.xLocation, this.yLocation, buttonSize);
 }
