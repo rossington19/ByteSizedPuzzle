@@ -7,6 +7,7 @@ function runCompleteAnimation(){
 		completeAnimation = false;
 		refreshAnimation = true;
 		animationSize = buttons[0].loc.z;
+		gamesCompleted++;
 		startGame();
 	}
 }
@@ -27,23 +28,15 @@ function drawText(){
 	textSize(30);
 	textAlign(CENTER);
 	rectMode(CENTER);
-	fill(mainColor);	
-	text(numberOfButtons.toString(), width/2,50);
-	if(numberOfButtons > minNumberOfButtons){
+	if (gamesCompleted >= gameUnlock)
+		fill(accentColor);
+	else
 		fill(mainColor);
-		ellipse((width/2)-50, 40, 40, 40);
-		fill(backgroundColor);
-		text("-", (width/2)-50,48);
-	}
-	if(numberOfButtons < maxNumberOfButtons){
-		fill(mainColor);
-		ellipse((width/2)+50, 40, 40, 40);
-		fill(backgroundColor);
-		text("+", (width/2)+50,50);
-	}
+	text(gamesCompleted.toString() + " / " + gameUnlock.toString(), width/2,50);
+
 	fill(mainColor);
 	rectMode(LEFT);
-	text("Restart",150,50);
+	text("Menu",150,50);
 	rectMode(RIGHT);
-	text("New Game",width-150,50);
+	text("Restart",width-150,50);
 }

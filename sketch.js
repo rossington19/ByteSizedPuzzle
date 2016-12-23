@@ -43,7 +43,7 @@ function startGame(){
 		}
 	}
 	if(empty){
-		console.log("Empty game generated")
+		// console.log("Empty game generated")
 		startGame();
 	} 
 }
@@ -60,7 +60,6 @@ function draw() {
 		if (completed()){
 			setTimeout(waitBeforeAnimation,200);
 		}
-		pressRandomButtons();
 	}
 	drawText();
 }
@@ -87,36 +86,19 @@ function mousePressed(){
 			currentArray = buttons[i].applyRule(currentArray);
 		}
 	} 											//If button clicked, apply rules current array
-	if (dist(mouseX, mouseY,((width/2)-50), 40) < 30 && numberOfButtons > minNumberOfButtons){
-		animationSize = buttonSize;
-		refreshAnimation = true;
-		numberOfButtons--;
-		startGame();
-	}
-	if (dist(mouseX, mouseY,((width/2)+50), 40) < 30 && numberOfButtons < maxNumberOfButtons){
-		animationSize = buttonSize;
-		refreshAnimation = true;
-		numberOfButtons++;
-		startGame();
-	}
+
 	if (dist(mouseX, mouseY,width-150,50) < 50){
+		gamesCompleted = 0;
 		startGame();
 	}
 	if (dist(mouseX, mouseY,150,50) < 50){
-		for (var i = 0; i < numberOfButtons; i++){
-			currentArray[i] = false;
+		if(gamesCompleted >= gameUnlock){
+			sessionStorage.setItem("saved_difficulty", currentDifficulty);
 		}
+		window.location.href = "index.html"
 	}
 }
 
 function waitBeforeAnimation(){
 	completeAnimation = true;
-}
-
-function pressRandomButtons(){
-	// if (frameCount % 5 === 0){
-	// 	var randomNumber = int(random(numberOfButtons));
-	// 	console.log(randomNumber.toString())
-	// 	currentArray = buttons[randomNumber].applyRule(currentArray);
-	// }
 }

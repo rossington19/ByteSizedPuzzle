@@ -1,4 +1,4 @@
-var diffCompleted = 8;
+var diffCompleted = 0;
 var store_difficulty = 1;
 var store_numberOfTargets;
 var store_numberOfButtons;
@@ -7,6 +7,12 @@ var store_extraTargets;
 var store_inverter;
 
 function startUp(){
+	if (sessionStorage.getItem("saved_difficulty")){
+		store_difficulty = parseInt(sessionStorage.getItem("saved_difficulty"));
+		console.log(store_difficulty.toString());
+		if (store_difficulty > diffCompleted)
+			diffCompleted = store_difficulty;
+	}
 	updateLevelSelect(0);
 }
 
@@ -21,9 +27,9 @@ function updateLevelSelect(num){
 		document.getElementById("upArrow").classList.add("hidden");
 	else
 		document.getElementById("upArrow").classList.remove("hidden");
-	if (store_difficulty === diffCompleted){
+	if (store_difficulty === diffCompleted+1){
 		document.getElementById("upArrow").classList.add("hidden");
-		document.getElementById("levelSub").innerHTML = "Solve 8 puzzles in a row to complete...";
+		document.getElementById("levelSub").innerHTML = "Solve " + gameUnlock.toString() + " puzzles in a row to complete...";
 	} else {
 		document.getElementById("levelSub").innerHTML = "Completed!";
 	}
@@ -124,12 +130,14 @@ function setVars(){
 	sessionStorage.setItem("saved_numberOfMoves", store_numberOfMoves);
 	sessionStorage.setItem("saved_extraTargets", store_extraTargets);
 	sessionStorage.setItem("saved_inverter", store_inverter);
+	sessionStorage.setItem("saved_difficulty", store_difficulty);
 }
 
 function getVars(){
 	numberOfButtons = sessionStorage.getItem("saved_numberOfButtons");
 	numberOfMoves = sessionStorage.getItem("saved_numberOfMoves");
 	numberOfTargets = sessionStorage.getItem("saved_numberOfTargets");
+	currentDifficulty = sessionStorage.getItem("saved_difficulty");
 	incTarget = (sessionStorage.getItem("saved_extraTargets") === "true");
 	invertRule = (sessionStorage.getItem("saved_inverter") === "true");
 }
