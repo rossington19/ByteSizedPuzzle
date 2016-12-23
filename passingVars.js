@@ -8,11 +8,8 @@ var store_inverter;
 
 function startUp(){
 	if (sessionStorage.getItem("saved_difficulty")){
-		store_difficulty = parseInt(sessionStorage.getItem("saved_difficulty"));
-		console.log(store_difficulty.toString());
-		if (store_difficulty === 0) store_difficulty = 1;
-		if (store_difficulty > diffCompleted)
-			diffCompleted = store_difficulty;
+		if (parseInt(sessionStorage.getItem("saved_difficulty")) > diffCompleted)
+			diffCompleted = parseInt(sessionStorage.getItem("saved_difficulty"));
 	}
 	updateLevelSelect(0);
 }
@@ -64,35 +61,42 @@ function calculateDifficulty(){
 		case 4:
 			store_numberOfTargets = 3;
 			store_numberOfButtons = 5;
-			store_numberOfMoves = 3;
+			store_numberOfMoves = 4;
 			store_extraTargets = false;
 			store_inverter = false;
 			break;
 		case 5:
 			store_numberOfTargets = 3;
 			store_numberOfButtons = 5;
-			store_numberOfMoves = 3;
+			store_numberOfMoves = 4;
 			store_extraTargets = true;
 			store_inverter = true;
 			break;
 		case 6:
 			store_numberOfTargets = 3;
 			store_numberOfButtons = 6;
-			store_numberOfMoves = 3;
+			store_numberOfMoves = 5;
 			store_extraTargets = false;
 			store_inverter = true;
 			break;
 		case 7:
 			store_numberOfTargets = 3;
 			store_numberOfButtons = 7;
-			store_numberOfMoves = 3;
+			store_numberOfMoves = 6;
 			store_extraTargets = true;
 			store_inverter = false;
 			break;
 		case 8:
 			store_numberOfTargets = 3;
 			store_numberOfButtons = 8;
-			store_numberOfMoves = 3;
+			store_numberOfMoves = 8;
+			store_extraTargets = true;
+			store_inverter = true;
+			break;
+		default:
+			store_numberOfTargets = 5;
+			store_numberOfButtons = 10;
+			store_numberOfMoves = 8;
 			store_extraTargets = true;
 			store_inverter = true;
 			break;
