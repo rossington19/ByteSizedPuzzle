@@ -6,7 +6,7 @@ var numberOfButtons = 6;
 var numberOfMoves = 3;
 
 var gamesCompleted = 0;
-var gameUnlock = 2;
+var gameUnlock = 8;
 var currentDifficulty;
 var minNumberOfButtons = 4;
 var maxNumberOfButtons = 20;
