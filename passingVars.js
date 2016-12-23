@@ -10,6 +10,7 @@ function startUp(){
 	if (sessionStorage.getItem("saved_difficulty")){
 		store_difficulty = parseInt(sessionStorage.getItem("saved_difficulty"));
 		console.log(store_difficulty.toString());
+		if (store_difficulty === 0) store_difficulty = 1;
 		if (store_difficulty > diffCompleted)
 			diffCompleted = store_difficulty;
 	}

@@ -94,6 +94,8 @@ function mousePressed(){
 	if (dist(mouseX, mouseY,150,50) < 50){
 		if(gamesCompleted >= gameUnlock){
 			sessionStorage.setItem("saved_difficulty", currentDifficulty);
+		} else {
+			sessionStorage.setItem("saved_difficulty", currentDifficulty-1);
 		}
 		window.location.href = "index.html"
 	}
